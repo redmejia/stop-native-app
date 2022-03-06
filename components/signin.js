@@ -1,36 +1,28 @@
 import React from "react";
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View,  Image } from 'react-native';
 import { Button, Input } from 'react-native-elements';
 
-
-
-const Register = () => {
-
+const Signin = () => {
 	return (
-
 		<View style={styles.screen}>
+				
+				<Image
+					style={styles.tinyLogo}
+					source={require('./images/logo35.png')}
 
-			<Image
-				style={styles.tinyLogo}
-				source={require('./images/logo35.png')}
-
-			/>
-
+				/>
 			<Input
-				placeholder='Name'
+				placeholder="Email"
 				style={styles.inputStyle}
+
 			/>
 			<Input
-				placeholder='Email'
-				style={styles.inputStyle}
-			/>
-			<Input
-				placeholder='Password'
+				placeholder="Password"
 				style={styles.inputStyle}
 				secureTextEntry={true}
 			/>
 			<Button
-				title="REGISTER"
+				title="LOG IN"
 				buttonStyle={{
 					backgroundColor: '#DC3F45',
 					borderWidth: 2,
@@ -45,11 +37,11 @@ const Register = () => {
 				titleStyle={{ fontWeight: 'bold' }}
 			/>
 		</View>
-	)
 
+	)
 }
 
-export default Register;
+export default Signin;
 
 const styles = StyleSheet.create({
 	screen: {
@@ -72,4 +64,5 @@ const styles = StyleSheet.create({
 		// width: '100%',
 		// height: '100%',
 	},
+
 })
