@@ -1,7 +1,8 @@
 import React from "react";
-import { Text, StyleSheet, FlatList, ScrollView } from "react-native";
+import { Text, StyleSheet, FlatList, ScrollView, Image } from "react-native";
 import { Card, Button } from "react-native-elements";
 
+const base = "http://192.168.1.128:8080/"
 
 
 
@@ -10,10 +11,16 @@ const RederProduct = ({ item }) => {
 
 		<Card >
 			<Card.Title style={styles.text}>{item.name}</Card.Title>
-			<Text style={styles.text}>{item.price}</Text>
+			 <Card.Divider/>
+			<Image
+				style={{ width: '100%', height: 300 }}
+				resizeMode="cover"
+				source={{ uri: base + item.image }}
+			/>
+			<Text style={styles.text}>Price : ${item.price}</Text>
 			<Button
 				title="buy"
-				
+
 				buttonStyle={{
 					borderRadius: 0,
 					marginLeft: 0,
@@ -32,7 +39,7 @@ const RederProduct = ({ item }) => {
 }
 
 // Product card
-const Product = ({data}) => {
+const Product = ({ data }) => {
 	return (
 		<ScrollView style={styles.screen}>
 
@@ -55,5 +62,7 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		color: '#DC3F45',
+		fontWeight : 'bold',
+		fontSize : 30,
 	}
 })
