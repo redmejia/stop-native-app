@@ -1,23 +1,27 @@
 import React from "react";
 import { Text, StyleSheet, FlatList, ScrollView, Image } from "react-native";
 import { Card, Button } from "react-native-elements";
-
+import { useNavigation } from "@react-navigation/native";
 import { baseURL } from "../redux/baseUrl";
 
 
 
-const RederProduct = ({ item }) => {
+
+const RederProduct = ({ item, navigation }) => {
+
+	const { name, image, price } = item.item
+
 	return (
 
 		<Card >
-			<Card.Title style={styles.text}>{item.name}</Card.Title>
-			 <Card.Divider/>
+			<Card.Title style={styles.text}>{name}</Card.Title>
+			<Card.Divider />
 			<Image
 				style={{ width: '100%', height: 300 }}
 				resizeMode="cover"
-				source={{ uri: baseURL + item.image }}
+				source={{ uri: baseURL + image }}
 			/>
-			<Text style={styles.text}>Price : ${item.price}</Text>
+			<Text style={styles.text}>Price : ${price}</Text>
 			<Button
 				title="buy"
 
@@ -32,7 +36,9 @@ const RederProduct = ({ item }) => {
 					borderRadius: 30,
 				}}
 				titleStyle={{ fontWeight: 'bold' }}
-
+				onPress={() => {
+					navigation.navigate('info', { product: item.item })
+				}}
 			/>
 		</Card>
 	)
@@ -40,12 +46,22 @@ const RederProduct = ({ item }) => {
 
 // Product card
 const Product = ({ data }) => {
+
+
+
+	const navigation = useNavigation()
+
 	return (
 		<ScrollView style={styles.screen}>
 
 			<FlatList
 				data={data}
-				renderItem={RederProduct}
+				renderItem={(item) =>
+					 <RederProduct
+					item={item}
+					navigation={navigation}
+				/>
+				}
 				keyExtractor={(item) => item.id.toString()}
 			/>
 		</ScrollView>
@@ -62,7 +78,7 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		color: '#DC3F45',
-		fontWeight : 'bold',
-		fontSize : 30,
+		fontWeight: 'bold',
+		fontSize: 30,
 	}
 })

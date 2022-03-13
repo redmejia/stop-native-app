@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import PantsProduct from "./PantsProduct";
 import ShirtProduct from "./ShirtProduct";
 import Home from "./Home";
+import ProductShop from "./ProductShop";
 
 import { connect } from "react-redux";
 import { fetchProductShirts, fetchProductPants } from "../redux/ActionCreators";
@@ -51,7 +52,7 @@ const TabRoot = () => {
 
 class Main extends Component {
 
-	componentDidMount(){
+	componentDidMount() {
 		this.props.fetchProductShirts();
 		this.props.fetchProductPants();
 	}
@@ -66,6 +67,11 @@ class Main extends Component {
 					component={TabRoot}
 					options={{ headerShown: false }}
 				/>
+				<Stack.Screen
+					name="info"
+					component={ProductShop}
+				/>
+
 			</Stack.Navigator>
 		)
 	}
