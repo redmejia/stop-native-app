@@ -1,24 +1,22 @@
 import React from "react";
-import { Text } from "react-native";
 import Product from "./Product";
 
 
 import { connect } from "react-redux";
+import Loading from "./Loading";
 
 
 const ShirtProduct = ({ product }) => {
 
-	const {loading, shirts} = product
+	const { loading, shirts } = product
 
 	return (
 		<>
 			{
-				!loading?
+				!loading ?
 					<Product data={shirts} />
 					:
-					<Text>
-						...loading
-					</Text>
+					<Loading />
 			}
 		</>
 	)
@@ -26,7 +24,7 @@ const ShirtProduct = ({ product }) => {
 
 const mapStateToProps = state => {
 	return {
-		product : state.shirts
+		product: state.shirts
 	}
 }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import Product from "./Product";
 import { connect } from "react-redux";
+import Loading from "./Loading";
 
 
 
@@ -12,7 +13,7 @@ const PantsProduct = ({ product }) => {
 			{
 				!loading ?
 					<Product data={pants} />
-				: null
+				: <Loading />
 		}
 		</>
 	)
