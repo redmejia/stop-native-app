@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 
 import { shirts } from "./ShirtsProduct";
+import { pants } from "./PantsProduct";
 
 
 
@@ -10,6 +11,7 @@ import { shirts } from "./ShirtsProduct";
 // root reducer
 const rootReducer = combineReducers({
 	shirts : shirts,
+	pants : pants,
 })
 
 export const ConfigureStore = () =>{

@@ -1,6 +1,7 @@
 import * as ActionType from '../redux/ActionType'
 import { baseURL } from "../redux/baseUrl";
 
+// Product shirts
 const productShirtsLoadingFialed = (error) => ({
 	type: ActionType.PRODUCT_SHIRTS_FAILED,
 	payload: error,
@@ -12,46 +13,51 @@ const productShirtsLoaded = (shirts) => ({
 	payload: shirts,
 })
 
-const shirtsProductLoading = () =>({
+const productShirtLoading = () =>({
 	type : ActionType.PRODUCT_SHIRTS_LOADING,
 })
 
+export const fetchProductShirts = () => async (dispatch) => {
 
-export const fetchProductShirts = () => dispatch => {
-	dispatch(shirtsProductLoading())
-
-	return fetch(baseURL + 'shirts')
-		.then(response => {
-			if(response.ok){
-				return response
-			}else{
-				const error = new Error("ERROR" + resp.status)
-				error.response = response
-				throw error
-			}
-		}, error =>{
-			const errorm = new Error(error.message)
-			throw errorm
-		})
-		.then(response => response.json())
-		.then(data => dispatch(productShirtsLoaded(data)))
-		.catch(error => dispatch(productShirtsLoadingFialed(error)))
-		
-} 
-
-
-// export const fetchProductShirts = () => async (dispatch) => {
-
-// 	dispatch(shirtsProductLoading())
+	dispatch(productShirtLoading())
 	
-// 	try {
-// 		const resp = await fetch(baseURL + 'shirts')
-// 		if (resp.ok) {
-// 			const data = resp.json()
-// 			return dispatch(productShirtsLoaded(data))
-// 		}
+	try {
+		const resp = await fetch(baseURL + 'shirts')
+		if (resp.ok) {
+			const data = await resp.json()
+			return dispatch(productShirtsLoaded(data))
+		}
 
-// 	} catch (error) {
-// 		return dispatch(productShirtsLoadingFialed(error))
-// 	}
-// }
+	} catch (error) {
+		return dispatch(productShirtsLoadingFialed(error))
+	}
+}
+
+// Product pants
+const productPantLoadingFailed = (error) =>({
+	type : ActionType.PRODUCT_PANTS_FAILED,
+	payload : error
+})
+
+const productPantLoaded = (pants) =>({
+	type  : ActionType.PRODUCT_PANTS_LOADED,
+	payload : pants
+})
+
+const productPantLoading = () => ({
+	type : ActionType.PRODUCT_PANTS_LOADING
+})
+
+export const fetchProductPants = () => async (dispatch) => {
+	dispatch(productPantLoading())
+
+	try {
+		const response = await fetch(baseURL + 'pants')
+		if (response.ok) {
+			const data = await response.json();
+			return dispatch(productPantLoaded(data))
+		}
+	} catch (error) {
+		return dispatch(productPantLoadingFailed(error))
+	}
+}

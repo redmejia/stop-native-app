@@ -8,7 +8,7 @@ import ShirtProduct from "./ShirtProduct";
 import Home from "./Home";
 
 import { connect } from "react-redux";
-import { fetchProductShirts } from "../redux/ActionCreators";
+import { fetchProductShirts, fetchProductPants } from "../redux/ActionCreators";
 
 
 const Tab = createBottomTabNavigator();
@@ -52,9 +52,10 @@ const TabRoot = () => {
 class Main extends Component {
 
 	componentDidMount(){
-		this.props.fetchProductShirts()
+		this.props.fetchProductShirts();
+		this.props.fetchProductPants();
 	}
-	
+
 	render() {
 
 		return (
@@ -71,7 +72,8 @@ class Main extends Component {
 }
 
 const mapDispatchToProps = {
-	fetchProductShirts
+	fetchProductShirts,
+	fetchProductPants
 }
 
 export default connect(null, mapDispatchToProps)(Main);

@@ -1,21 +1,32 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { Text } from "react-native";
 import Product from "./Product";
+
 
 import { connect } from "react-redux";
 
 
-const ShirtProduct = ({ shirts }) => {
+const ShirtProduct = ({ product }) => {
+
+	const {loading, shirts} = product
 
 	return (
 		<>
-			<Product data={shirts.shirts} />
+			{
+				!loading?
+					<Product data={shirts} />
+					:
+					<Text>
+						...loading
+					</Text>
+			}
 		</>
 	)
 }
 
 const mapStateToProps = state => {
 	return {
-		shirts: state.shirts
+		product : state.shirts
 	}
 }
 

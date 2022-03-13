@@ -16,21 +16,21 @@ export const shirts = (state = initState, action) => {
 				shirts: action.payload.shirts
 			}
 
-		// case ActionType.PRODUCT_SHIRTS_LOADING:
-		// 	return {
-		// 		...state,
-		// 		loading: true,
-		// 		error: null,
-		// 		shirts: action.payload
-		// 	}
+		case ActionType.PRODUCT_SHIRTS_LOADING:
+			return {
+				...state,
+				loading: true,
+				error: null,
+				shirts: action.payload
+			}
 
-		// case ActionType.PRODUCT_SHIRTS_FAILED:
-		// 	return {
-		// 		...state,
-		// 		loading: true,
-		// 		error: action.payload.error,
-		// 		shirts: action.payload
-		// 	}
+		case ActionType.PRODUCT_SHIRTS_FAILED:
+			return {
+				...state,
+				loading: true,
+				error: action.payload.error,
+				shirts: action.payload
+			}
 
 		default:
 			return state
