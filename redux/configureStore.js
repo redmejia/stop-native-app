@@ -2,12 +2,14 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 
-// reducer here
+import { shirts } from "./ShirtsProduct";
+
+
 
 
 // root reducer
 const rootReducer = combineReducers({
-	shirts
+	shirts : shirts,
 })
 
 export const ConfigureStore = () =>{

@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { StyleSheet } from "react-native";
+// import { StyleSheet } from "react-native";
+
 import PantsProduct from "./PantsProduct";
 import ShirtProduct from "./ShirtProduct";
 import Home from "./Home";
+
+import { connect } from "react-redux";
+import { fetchProductShirts } from "../redux/ActionCreators";
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -46,6 +51,10 @@ const TabRoot = () => {
 
 class Main extends Component {
 
+	componentDidMount(){
+		this.props.fetchProductShirts()
+	}
+	
 	render() {
 
 		return (
@@ -61,5 +70,8 @@ class Main extends Component {
 	}
 }
 
+const mapDispatchToProps = {
+	fetchProductShirts
+}
 
-export default Main;
+export default connect(null, mapDispatchToProps)(Main);

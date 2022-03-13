@@ -1,65 +1,22 @@
 import React, { useEffect } from "react";
 import Product from "./Product";
 
+import { connect } from "react-redux";
 
 
-// const shirt = [
-// 	{
-// 		id: 1,
-// 		name: 'shirt1',
-// 		price: 13.53
-
-// 	},
-// 	{
-// 		id: 2,
-// 		name: 'shirt2',
-// 		price: 13.53
-
-// 	},
-// 	{
-// 		id: 3,
-// 		name: 'shirt3',
-// 		price: 13.35
-
-// 	}
-// ]
-
-
-
-const ShirtProduct = () => {
-	
-	// useEffect(async () => {
-
-	// 	try {
-
-	// 		const data = await fetch("http://192.168.1.128:8080/shirts")
-	// 		if (data.ok) {
-
-	// 			const resp = await data.json()
-
-	// 		} else if (data.ok === false) {
-
-	// 			setLoad(false)
-
-	// 		}
-
-
-
-	// 	} catch (error) {
-
-	// 		setMsg(error)
-
-	// 	}
-
-	// }, [])
-
-
+const ShirtProduct = ({ shirts }) => {
 
 	return (
 		<>
+			<Product data={shirts.shirts} />
 		</>
-		// <Product data={data.shirts} />
 	)
 }
 
-export default ShirtProduct;
+const mapStateToProps = state => {
+	return {
+		shirts: state.shirts
+	}
+}
+
+export default connect(mapStateToProps, null)(ShirtProduct);
