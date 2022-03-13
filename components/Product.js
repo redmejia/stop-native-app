@@ -2,7 +2,7 @@ import React from "react";
 import { Text, StyleSheet, FlatList, ScrollView, Image } from "react-native";
 import { Card, Button } from "react-native-elements";
 
-const base = "http://192.168.1.128:8080/"
+import { baseURL } from "../redux/baseUrl";
 
 
 
@@ -15,7 +15,7 @@ const RederProduct = ({ item }) => {
 			<Image
 				style={{ width: '100%', height: 300 }}
 				resizeMode="cover"
-				source={{ uri: base + item.image }}
+				source={{ uri: baseURL + item.image }}
 			/>
 			<Text style={styles.text}>Price : ${item.price}</Text>
 			<Button
