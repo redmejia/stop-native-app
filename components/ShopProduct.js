@@ -8,6 +8,7 @@ import {
 	Alert
 } from "react-native";
 import { baseURL } from "../redux/baseUrl";
+import CheckOut from "./CheckOut";
 
 
 const ProductShop = ({ route }) => {
@@ -118,22 +119,8 @@ const ProductShop = ({ route }) => {
 					>
 						<Text style={styles.text}>My Order</Text>
 					</TouchableOpacity>
-
-					<Button
-						title="Check Out"
-						buttonStyle={{
-							borderRadius: 0,
-							marginLeft: 0,
-							marginRight: 0,
-							marginBottom: 5,
-							backgroundColor: '#212129',
-							borderWidth: 1,
-							borderColor: '#212129',
-							borderRadius: 30,
-						}}
-
-						onPress={() => console.log(myOrder)}
-					/>
+					
+					<CheckOut myOrder={myOrder} />
 				</View>
 			</Card>
 		</ScrollView>
