@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// import { StyleSheet } from "react-native";
 
 import PantsProduct from "./PantsProduct";
 import ShirtProduct from "./ShirtProduct";
 import Home from "./Home";
-import ProductShop from "./ProductShop";
+import ShopProduct from "./ShopProduct";
 
 import { connect } from "react-redux";
 import { fetchProductShirts, fetchProductPants } from "../redux/ActionCreators";
@@ -70,7 +69,7 @@ class Main extends Component {
 
 				<Stack.Screen
 					name="Check Out"
-					component={ProductShop}
+					component={ShopProduct}
 					options={{
 						headerStyle :{
 							backgroundColor : '#DC3F45'
