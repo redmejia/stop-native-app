@@ -67,9 +67,15 @@ class Main extends Component {
 					component={TabRoot}
 					options={{ headerShown: false }}
 				/>
+
 				<Stack.Screen
-					name="info"
+					name="Check Out"
 					component={ProductShop}
+					options={{
+						headerStyle :{
+							backgroundColor : '#DC3F45'
+						}
+					}}
 				/>
 
 			</Stack.Navigator>

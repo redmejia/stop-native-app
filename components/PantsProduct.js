@@ -18,9 +18,11 @@ const PantsProduct = ({ product }) => {
 		</>
 	)
 }
+
 const mapStateToProps = state => {
 	return {
 		product: state.pants
 	}
 }
+
 export default connect(mapStateToProps, null)(PantsProduct);

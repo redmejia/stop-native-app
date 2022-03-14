@@ -35,9 +35,10 @@ const RederProduct = ({ item, navigation }) => {
 					borderColor: '#DC3F45',
 					borderRadius: 30,
 				}}
+
 				titleStyle={{ fontWeight: 'bold' }}
 				onPress={() => {
-					navigation.navigate('info', { product: item.item })
+					navigation.navigate('Check Out', { product: item.item })
 				}}
 			/>
 		</Card>
