@@ -1,10 +1,12 @@
 import React from "react";
-import { StyleSheet, View, Image } from 'react-native';
-import { Button, Input } from 'react-native-elements';
+import { StyleSheet, View, Image} from 'react-native';
+import { Button, Icon, Input } from 'react-native-elements';
+import { useNavigation } from "@react-navigation/native";
 
 
 
 const Register = () => {
+	const navigation = useNavigation()
 
 	return (
 
@@ -19,15 +21,38 @@ const Register = () => {
 			<Input
 				placeholder='Name'
 				style={styles.inputStyle}
+				leftIcon={
+					<Icon
+						name='user'
+						type='font-awesome'
+						size={24}
+						color='#7f8385'
+					/>
+				}
 			/>
 			<Input
 				placeholder='Email'
 				style={styles.inputStyle}
+				leftIcon={
+					<Icon
+						name="email"
+						size={24}
+						color='#7f8385'
+					/>
+				}
 			/>
 			<Input
 				placeholder='Password'
 				style={styles.inputStyle}
 				secureTextEntry={true}
+				leftIcon={
+					<Icon
+						name="lock"
+						type='font-awesome'
+						size={24}
+						color='#7f8385'
+					/>
+				}
 			/>
 			<Button
 				title="REGISTER"
@@ -43,7 +68,12 @@ const Register = () => {
 					marginVertical: 10,
 				}}
 				titleStyle={{ fontWeight: 'bold' }}
+
+				onPress={() => {
+					navigation.navigate('HomeSreen')	
+				}}
 			/>
+			
 		</View>
 	)
 
@@ -62,14 +92,5 @@ const styles = StyleSheet.create({
 		color: '#DC3F45',
 		borderBottomWidth: 3,
 		borderBottomColor: '#DC3F45',
-	},
-	tinyLogo: {
-		
-		// justifyContent: 'center',
-        // alignItems: 'center',
-		// margin : 0,
-		// padding: 0,
-		// width: '100%',
-		// height: '100%',
 	},
 })

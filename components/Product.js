@@ -38,7 +38,6 @@ const RederProduct = ({ item, navigation }) => {
 
 				titleStyle={{ fontWeight: 'bold' }}
 				onPress={() => {
-					// navigate to  Make an order component. 
 					navigation.navigate('Check Out', { product: item.item })
 				}}
 			/>

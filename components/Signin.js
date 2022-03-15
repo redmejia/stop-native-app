@@ -1,28 +1,45 @@
 import React from "react";
-import { StyleSheet, View,  Image } from 'react-native';
-import { Button, Input } from 'react-native-elements';
+import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
+import { Button, Icon, Input } from 'react-native-elements';
+import { useNavigation } from "@react-navigation/native";
 
 const Signin = () => {
+	const navigation = useNavigation()
+
 	return (
 		<View style={styles.screen}>
-				
-				<Image
-					style={styles.tinyLogo}
-					source={require('./images/logo35.png')}
 
-				/>
+			<Image
+				style={styles.tinyLogo}
+				source={require('./images/logo35.png')}
+
+			/>
 			<Input
 				placeholder="Email"
 				style={styles.inputStyle}
+				leftIcon={
+					<Icon
+						name="email"
+						size={24}
+						color='#7f8385'
+					/>
+				}
 
 			/>
 			<Input
 				placeholder="Password"
 				style={styles.inputStyle}
 				secureTextEntry={true}
+				leftIcon={
+					<Icon
+						name="lock"
+						size={24}
+						color='#7f8385'
+					/>
+				}
 			/>
 			<Button
-				title="LOG IN"
+				title="Sign in"
 				buttonStyle={{
 					backgroundColor: '#DC3F45',
 					borderWidth: 2,
@@ -35,7 +52,17 @@ const Signin = () => {
 					marginVertical: 10,
 				}}
 				titleStyle={{ fontWeight: 'bold' }}
+				onPress={() => {
+					navigation.navigate('HomeSreen')
+				}}
 			/>
+			<TouchableOpacity
+				onPress={() => {
+					navigation.navigate('Register')	
+				}}	
+			>
+				<Text style={{ color: 'white' }}>Don't have an account yet register</Text>
+			</TouchableOpacity>
 		</View>
 
 	)
@@ -54,15 +81,5 @@ const styles = StyleSheet.create({
 		color: '#DC3F45',
 		borderBottomWidth: 3,
 		borderBottomColor: '#DC3F45',
-	},
-	tinyLogo: {
-		
-		// justifyContent: 'center',
-        // alignItems: 'center',
-		// margin : 0,
-		// padding: 0,
-		// width: '100%',
-		// height: '100%',
-	},
-
+	}
 })

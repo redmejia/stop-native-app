@@ -13,6 +13,9 @@ import ShopProduct from "./ShopProduct";
 import { connect } from "react-redux";
 import { fetchProductShirts, fetchProductPants } from "../redux/ActionCreators";
 import Cart from "./Cart";
+import Register from "./Register";
+import Signin from "./Signin";
+import User from "./User";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -85,21 +88,24 @@ const TabRoot = (itemLen) => {
 				name="Home"
 				component={Home}
 				options={{
-					tabBarLabelStyle: styles.labelStyle
+					tabBarLabelStyle: styles.labelStyle,
+					headerRight : () => <User  /> 
 				}}
 			/>
 			<Tab.Screen
 				name="Pants"
 				component={PantsProduct}
 				options={{
-					tabBarLabelStyle: styles.labelStyle
+					tabBarLabelStyle: styles.labelStyle,
+					headerRight : () => <User  /> 
 				}}
 			/>
 			<Tab.Screen
 				name="Shirts"
 				component={ShirtProduct}
 				options={{
-					tabBarLabelStyle: styles.labelStyle
+					tabBarLabelStyle: styles.labelStyle,
+					headerRight : () => <User  /> 
 				}}
 			/>
 			<Tab.Screen
@@ -107,7 +113,8 @@ const TabRoot = (itemLen) => {
 				component={Cart}
 				options={{
 					tabBarLabelStyle: styles.labelStyle,
-					tabBarBadge: itemLen > 0 ? itemLen : null
+					tabBarBadge: itemLen > 0 ? itemLen : null,
+					headerRight : () => <User  /> 
 				}}
 			/>
 		</Tab.Navigator>
@@ -132,8 +139,25 @@ class Main extends Component {
 		return (
 
 			<Stack.Navigator>
+				
 				<Stack.Screen
-					name="Stop"
+					name="Signin"
+					component={Signin}
+					options={{
+						headerShown : false
+					}}
+				/>
+
+				<Stack.Screen 
+					name="Register"
+					component={Register}
+					options={{
+						headerShown : false,
+					}}
+				/>
+
+				<Stack.Screen
+					name="HomeSreen"
 					component={() => TabRoot(len)}
 					options={{ headerShown: false }}
 				/>
