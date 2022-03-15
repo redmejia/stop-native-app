@@ -1,32 +1,16 @@
 import React, { useState } from "react";
 import { Modal, StyleSheet, Text, Pressable, View, ScrollView } from "react-native";
 import {
-	Input, Card
+	Input
 } from "react-native-elements";
 
-const PricingCardInfo = ({ name, qty, size, total }) => (
-	<Card 
-		containerStyle={{
-			borderRadius: 5,
-			width : 250,
-		}}
-		
-	>
-		<View style={styles.pricingCardStyle}>
-			<Text style={styles.pricingTitleText}>{name}</Text>
-			<Text style={styles.pricingSubTitleText}>${total}</Text>
-			<Text style={styles.pricingSubSmall}>qty {qty}</Text>
-			<Text style={styles.pricingSubSmall}>size {size}</Text>
-		</View>
-	</Card>
-)
 
-const CheckOut = ({ myOrder }) => {
+const CheckOut = () => {
 
 
 	const [modalVisible, setModalVisible] = useState(false);
 
-	const { name, qty, size, total } = myOrder;
+	// const { name, qty, size, total } = myOrder;
 
 	return (
 		<View>
@@ -41,13 +25,6 @@ const CheckOut = ({ myOrder }) => {
 				<ScrollView >
 					<View style={styles.modalView}>
 						
-						<PricingCardInfo
-							name={name}
-							qty={qty}
-							size={size}
-							total={total}
-						/>
-
 						<Text style={styles.textStyle}>Deliver to</Text>
 						<Input
 							placeholder="Address"
@@ -132,22 +109,7 @@ const styles = StyleSheet.create({
 		marginBottom: 15,
 		textAlign: "center"
 	},
-	pricingCardStyle: {
-		alignItems: 'center',
-		alignContent: 'center',
-	},
-	pricingTitleText : {
-		fontSize : 50,
-		color : '#DC3F45',
-	},
-	pricingSubTitleText : {
-		fontSize : 50,
-		color : '#212129',
-	},
-	pricingSubSmall : {
-		fontSize : 30,
-		color : '#7f8385',
-	}
+	
 
 });
 

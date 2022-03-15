@@ -13,14 +13,14 @@ const productShirtsLoaded = (shirts) => ({
 	payload: shirts,
 })
 
-const productShirtLoading = () =>({
-	type : ActionType.PRODUCT_SHIRTS_LOADING,
+const productShirtLoading = () => ({
+	type: ActionType.PRODUCT_SHIRTS_LOADING,
 })
 
 export const fetchProductShirts = () => async (dispatch) => {
 
 	dispatch(productShirtLoading())
-	
+
 	try {
 		const resp = await fetch(baseURL + 'shirts')
 		if (resp.ok) {
@@ -34,18 +34,18 @@ export const fetchProductShirts = () => async (dispatch) => {
 }
 
 // Product pants
-const productPantLoadingFailed = (error) =>({
-	type : ActionType.PRODUCT_PANTS_FAILED,
-	payload : error
+const productPantLoadingFailed = (error) => ({
+	type: ActionType.PRODUCT_PANTS_FAILED,
+	payload: error
 })
 
-const productPantLoaded = (pants) =>({
-	type  : ActionType.PRODUCT_PANTS_LOADED,
-	payload : pants
+const productPantLoaded = (pants) => ({
+	type: ActionType.PRODUCT_PANTS_LOADED,
+	payload: pants
 })
 
 const productPantLoading = () => ({
-	type : ActionType.PRODUCT_PANTS_LOADING
+	type: ActionType.PRODUCT_PANTS_LOADING
 })
 
 export const fetchProductPants = () => async (dispatch) => {
@@ -60,4 +60,16 @@ export const fetchProductPants = () => async (dispatch) => {
 	} catch (error) {
 		return dispatch(productPantLoadingFailed(error))
 	}
+}
+
+// Order cart
+const addItemToMyCart = (item) => ({
+	type: ActionType.ADD_ITEM_TO_CART,
+	payload: item
+})
+
+export const addItem = (item) => dispatch => {
+
+	return dispatch(addItemToMyCart(item))
+
 }

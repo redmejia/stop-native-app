@@ -23,7 +23,7 @@ const RederProduct = ({ item, navigation }) => {
 			/>
 			<Text style={styles.text}>Price : ${price}</Text>
 			<Button
-				title="buy"
+				title="Buy"
 
 				buttonStyle={{
 					borderRadius: 0,
@@ -38,6 +38,7 @@ const RederProduct = ({ item, navigation }) => {
 
 				titleStyle={{ fontWeight: 'bold' }}
 				onPress={() => {
+					// navigate to  Make an order component. 
 					navigation.navigate('Check Out', { product: item.item })
 				}}
 			/>

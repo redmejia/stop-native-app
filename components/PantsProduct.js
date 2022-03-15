@@ -7,14 +7,14 @@ import Loading from "./Loading";
 
 const PantsProduct = ({ product }) => {
 	const { loading, pants } = product;
-	
+
 	return (
 		<>
 			{
 				!loading ?
 					<Product data={pants} />
-				: <Loading />
-		}
+					: <Loading />
+			}
 		</>
 	)
 }

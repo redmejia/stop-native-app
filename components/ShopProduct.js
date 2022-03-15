@@ -8,10 +8,11 @@ import {
 	Alert
 } from "react-native";
 import { baseURL } from "../redux/baseUrl";
-import CheckOut from "./CheckOut";
 
+import { connect } from "react-redux";
+import { addItem } from "../redux/ActionCreators";
 
-const ProductShop = ({ route }) => {
+const ProductShop = ({ route, addItem }) => {
 
 
 	const { product } = route.params;
@@ -109,7 +110,6 @@ const ProductShop = ({ route }) => {
 									},
 									{
 										text: 'OK',
-										onPress: () => console.log("bye")
 									}
 
 								]
@@ -119,8 +119,10 @@ const ProductShop = ({ route }) => {
 					>
 						<Text style={styles.text}>My Order</Text>
 					</TouchableOpacity>
-					
-					<CheckOut myOrder={myOrder} />
+					<Button
+						title="Add to my cart"
+						onPress={() => addItem(myOrder)}
+					/>
 				</View>
 			</Card>
 		</ScrollView>
@@ -152,4 +154,9 @@ const styles = StyleSheet.create({
 })
 
 
-export default ProductShop;
+const mapDispatchToProps = {
+	addItem
+}
+
+
+export default connect(null, mapDispatchToProps)(ProductShop);

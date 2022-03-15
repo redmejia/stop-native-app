@@ -12,11 +12,12 @@ import ShopProduct from "./ShopProduct";
 
 import { connect } from "react-redux";
 import { fetchProductShirts, fetchProductPants } from "../redux/ActionCreators";
+import Cart from "./Cart";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-const TabRoot = () => {
+const TabRoot = (itemLen) => {
 
 	return (
 
@@ -30,10 +31,10 @@ const TabRoot = () => {
 
 			}}
 
-			
+
 
 			screenOptions={({ route }) => ({
-				tabBarIcon: ({color}) => {
+				tabBarIcon: ({ color }) => {
 					if (route.name === 'Home') {
 						return (
 							<Icon
@@ -43,7 +44,7 @@ const TabRoot = () => {
 							/>
 						);
 					}
-					if (route.name === 'Shirt') {
+					if (route.name === 'Shirts') {
 						return (
 
 							<Icon
@@ -63,16 +64,52 @@ const TabRoot = () => {
 							/>
 						)
 					}
+					if (route.name === 'Cart') {
+						return (
+							<Icon
+								name='shopping-cart'
+								type='font-awesome'
+								color='#7f8385'
+							/>
+						)
+					}
 				},
 				headerStyle: {
 					backgroundColor: '#DC3F45'
 				},
+
 			})}
 
 		>
-			<Tab.Screen name="Pants" component={PantsProduct} options={{tabBarLabelStyle : styles.labelStyle}} />
-			<Tab.Screen name="Home" component={Home} options={{tabBarLabelStyle : styles.labelStyle}}/>
-			<Tab.Screen name="Shirt" component={ShirtProduct} options={{tabBarLabelStyle : styles.labelStyle}}/>
+			<Tab.Screen
+				name="Home"
+				component={Home}
+				options={{
+					tabBarLabelStyle: styles.labelStyle
+				}}
+			/>
+			<Tab.Screen
+				name="Pants"
+				component={PantsProduct}
+				options={{
+					tabBarLabelStyle: styles.labelStyle
+				}}
+			/>
+			<Tab.Screen
+				name="Shirts"
+				component={ShirtProduct}
+				options={{
+					tabBarLabelStyle: styles.labelStyle
+				}}
+			/>
+			<Tab.Screen
+				name="Cart"
+				component={Cart}
+				options={{
+					tabBarLabelStyle: styles.labelStyle,
+					tabBarBadge: itemLen > 0 ? itemLen : null
+				}}
+			/>
 		</Tab.Navigator>
 
 	)
@@ -87,14 +124,17 @@ class Main extends Component {
 		this.props.fetchProductPants();
 	}
 
+
 	render() {
+
+		const len = this.props.cartItems.cart.length
 
 		return (
 
 			<Stack.Navigator>
 				<Stack.Screen
 					name="Stop"
-					component={TabRoot}
+					component={() => TabRoot(len)}
 					options={{ headerShown: false }}
 				/>
 
@@ -113,18 +153,25 @@ class Main extends Component {
 	}
 }
 
+const mapStateToProps = state => {
+	return {
+		cartItems: state.cart
+	}
+}
+
 const mapDispatchToProps = {
 	fetchProductShirts,
 	fetchProductPants
 }
-export default connect(null, mapDispatchToProps)(Main);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
 
 const styles = StyleSheet.create({
-	iconStyle : {
-		color : '#7f8385'
+	iconStyle: {
+		color: '#7f8385'
 	},
-	labelStyle : {
-		fontSize : 14,
-		fontWeight : 'bold',
+	labelStyle: {
+		fontSize: 14,
+		fontWeight: 'bold',
 	}
 })
