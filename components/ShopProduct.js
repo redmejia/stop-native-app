@@ -120,7 +120,19 @@ const ProductShop = ({ route, addItem }) => {
 						<Text style={styles.text}>My Order</Text>
 					</TouchableOpacity>
 					<Button
-						title="Add to my cart"
+						title="Add Item"
+
+						buttonStyle={{
+							borderRadius: 0,
+							marginLeft: 5,
+							marginRight: 0,
+							marginBottom: 0,
+							backgroundColor: '#DC3F45',
+							borderWidth: 1,
+							borderColor: '#DC3F45',
+							borderRadius: 100,
+						}}
+
 						onPress={() => addItem(myOrder)}
 					/>
 				</View>

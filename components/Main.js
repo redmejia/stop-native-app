@@ -20,7 +20,7 @@ import User from "./User";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-const TabRoot = (itemLen) => {
+const TabRoot = ({itemLen}) => {
 
 	return (
 
@@ -114,6 +114,9 @@ const TabRoot = (itemLen) => {
 				options={{
 					tabBarLabelStyle: styles.labelStyle,
 					tabBarBadge: itemLen > 0 ? itemLen : null,
+					tabBarBadgeStyle : {
+						backgroundColor : 'blue',
+					},
 					headerRight : () => <User  /> 
 				}}
 			/>
@@ -158,12 +161,12 @@ class Main extends Component {
 
 				<Stack.Screen
 					name="HomeSreen"
-					component={() => TabRoot(len)}
+					component={props => <TabRoot {...props} itemLen={len}  />}
 					options={{ headerShown: false }}
 				/>
 
 				<Stack.Screen
-					name="Check Out"
+					name="Order"
 					component={ShopProduct}
 					options={{
 						headerStyle: {

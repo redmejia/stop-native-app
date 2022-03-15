@@ -38,7 +38,7 @@ const RederProduct = ({ item, navigation }) => {
 
 				titleStyle={{ fontWeight: 'bold' }}
 				onPress={() => {
-					navigation.navigate('Check Out', { product: item.item })
+					navigation.navigate('Order', { product: item.item })
 				}}
 			/>
 		</Card>

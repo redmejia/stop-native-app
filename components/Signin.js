@@ -4,6 +4,7 @@ import { Button, Icon, Input } from 'react-native-elements';
 import { useNavigation } from "@react-navigation/native";
 
 const Signin = () => {
+	
 	const navigation = useNavigation()
 
 	return (
@@ -58,13 +59,15 @@ const Signin = () => {
 			/>
 			<TouchableOpacity
 				onPress={() => {
-					navigation.navigate('Register')	
-				}}	
+					navigation.navigate('Register')
+				}}
 			>
-				<Text style={{ color: 'white' }}>Don't have an account yet register</Text>
-			</TouchableOpacity>
-		</View>
+				<Text style={{ color: 'white' }}>
+					Not registered?<Text style={{ color: '#DC3F45' }}> Create an account</Text>
+				</Text>
 
+			</TouchableOpacity>
+		</View >
 	)
 }
 

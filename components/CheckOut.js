@@ -25,7 +25,10 @@ const CheckOut = () => {
 				<ScrollView >
 					<View style={styles.modalView}>
 						
-						<Text style={styles.textStyle}>Deliver to</Text>
+						<Text style={styles.textStyle}>Deliver To</Text>
+						<Input
+							placeholder="Name"
+						/>
 						<Input
 							placeholder="Address"
 						/>
