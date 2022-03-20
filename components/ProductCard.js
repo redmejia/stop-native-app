@@ -45,10 +45,7 @@ const RederProduct = ({ item, navigation }) => {
 	)
 }
 
-// Product card
-const Product = ({ data }) => {
-
-
+const ProductCard = ({ data }) => {
 
 	const navigation = useNavigation()
 
@@ -70,7 +67,7 @@ const Product = ({ data }) => {
 }
 
 
-export default Product;
+export default ProductCard;
 
 const styles = StyleSheet.create({
 	screen: {

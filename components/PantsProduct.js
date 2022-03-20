@@ -1,5 +1,5 @@
 import React from "react";
-import Product from "./Product";
+import ProductCard from "./ProductCard";
 import { connect } from "react-redux";
 import Loading from "./Loading";
 
@@ -12,7 +12,7 @@ const PantsProduct = ({ product }) => {
 		<>
 			{
 				!loading ?
-					<Product data={pants} />
+					<ProductCard data={pants} />
 					: <Loading />
 			}
 		</>
