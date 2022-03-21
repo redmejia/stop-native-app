@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, StyleSheet, FlatList, ScrollView, Image } from "react-native";
+import { Text, StyleSheet, FlatList, View, Image } from "react-native";
 import { Card, Button } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import { baseURL } from "../redux/baseUrl";
@@ -50,19 +50,18 @@ const ProductCard = ({ data }) => {
 	const navigation = useNavigation()
 
 	return (
-		<ScrollView style={styles.screen}>
-
+		<View style={styles.screen}>
 			<FlatList
 				data={data}
 				renderItem={(item) =>
-					 <RederProduct
-					item={item}
-					navigation={navigation}
-				/>
+					<RederProduct
+						item={item}
+						navigation={navigation}
+					/>
 				}
 				keyExtractor={(item) => item.id.toString()}
 			/>
-		</ScrollView>
+		</View>
 	)
 }
 
